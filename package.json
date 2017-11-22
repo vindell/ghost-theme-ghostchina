@@ -1,0 +1,41 @@
+{
+  "name": "nifty-theme",
+  "description": "Nifty theme for Ghost",
+  "homepage": "https://github.com/vindell/ghost-theme-nifty",
+  "version": "1.0.0",
+  "author": {
+    "name": "vindell",
+    "email": "hnxyhcwdl1003@163.com",
+    "url": "https://github.com/vindell"
+  },
+  "config": {
+    "posts_per_page": 6
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vindell/ghost-theme-nifty"
+  },
+  "scripts": {
+   
+  },
+  "bugs": {
+    "url": "https://github.com/vindell/ghost-theme-nifty/issues"
+  },
+  "keywords": [
+    "elegant",
+    "ghost",
+    "minimal",
+    "theme",
+    "blog",
+    "caffeine",
+    "material",
+    "design",
+    "ghost.org"
+  ],
+  "devDependencies": {
+  },
+  "engines": {
+    "node": "^4.2.0 || ^6.10.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		
+		{{! Document Settings }}
+		<!--[if lte IE 9]>
+		<script type="text/javascript">
+			window.location = "/browser-compatibility";
+		</script>
+		<![endif]-->    
+
+		{{! Base Meta }}
+		<title>{{meta_title}}</title>
+		{{> meta}}
+		{{> seo}}
+		
+		{{! Styles'n'Scripts }}
+		{{> head-css}}
+		{{> head-script}}
+		<link rel="shortcut icon" href="{{asset "favicon.ico"}}">
+		{{!-- This tag outputs SEO meta+structured data and other important settings --}}
+		{{ghost_head}}
+
+	</head> 
+	
+	<body class="{{body_class}}">		 
+		
+		{{navigation}}
+		
+		<section class="content-wrap">
+			{{! Everything else gets inserted here }}
+			<div class="container">
+				<div class="row">
+				{{{body}}}
+				</div>
+			</div>
+		</section>
+		
+		{{> footer}}
+		{{> copyright}}
+		
+		{{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
+		{{ghost_foot}}		
+
+	</body>
+</html>

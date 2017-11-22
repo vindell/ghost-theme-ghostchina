@@ -1,0 +1,96 @@
+{{! This is the post loop - each post will be output using this markup }}
+
+<style type="text/css">
+    .post-pic {
+        float: left;
+        margin-right: 20px;
+        width: 165px;
+        height: 140px;
+        background: no-repeat center center;
+        background-size: cover;
+    }
+
+    .post-loading {
+        text-align: center;
+    }
+
+</style>
+{{#foreach posts}}
+<article id="109" class="post tag-android tag-ke-hu-duan {{post_class}}">
+
+    <div class="post-head">
+        <h1 class="post-title"><a href="/android-app-for-ghost/">Android 版 Ghost 客户端来了！</a></h1>
+        <div class="post-meta">
+            <span class="author">作者：<a href="/author/wangsai/">王赛</a></span> •
+            <time class="post-date" datetime="2017年11月8日星期三下午4点44分" title="2017年11月8日星期三下午4点44分">2017年11月8日</time>
+        </div>
+    </div>
+    <div class="featured-media">
+		{{!有封面的时候展示封面}}
+        {{#if profile_image}}
+        <a class="post-pic hidden-xs" href="{{url}}" style="background-image: url({{profile_image}});"></a>
+        {{/if}}
+		
+        <a href="/android-app-for-ghost/"><img src="http://static.ghostchina.com/image/c/06/765c76cb1ca259dd8fe8002459bbc.jpg" alt="Android 版 Ghost 客户端来了！"></a>
+    </div>
+    <div class="post-content">
+       <p>{{excerpt characters="140"}} <a class="read-more" href="{{url}}">&raquo;</a></p>	   
+    </div>
+    <div class="post-permalink">
+        <a href="{{url}}" class="btn btn-default">阅读全文</a>
+    </div>
+    <footer class="post-footer post-meta clearfix ">
+		{{#if author.profile_image}}<img class="author-thumb" src="{{author.profile_image}}" alt="{{author.name}}" nopin="nopin" />{{/if}}
+		{{author}}
+		{{tags prefix="&nbsp;<i class=\"fa fa-tags\"></i>&nbsp;"}}
+		<time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY年MM月DD日"}}</time>
+    </footer>
+</article>
+{{/foreach}}
+	
+{{pagination}}
+	
+
+<section id="posts-content">
+   
+    {{#foreach posts}}
+    <div class="panel panel-bordered-mint {{post_class}}">
+		
+		<div class="panel-heading post-header">
+			<h3 class="panel-title post-title"><a href="{{url}}">{{{title}}}</a></h3>
+		</div>
+		<div class="panel-body post-excerpt">
+			<p>{{excerpt characters="140"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
+		</div>
+		<div class="panel-footer post-meta">
+			{{#if author.profile_image}}<img class="author-thumb" src="{{author.profile_image}}" alt="{{author.name}}" nopin="nopin" />{{/if}}
+            {{author}}
+            {{tags prefix="&nbsp;<i class=\"fa fa-tags\"></i>&nbsp;"}}
+            <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY年MM月DD日"}}</time>
+		</div>
+	</div>
+    {{/foreach}}
+	
+    {{pagination}}
+
+</section>
+
+<script src="{{asset "js/jquery.infinitescroll.min.js"}}"></script>
+<script>
+    $(document).ready(function (){
+        $('#posts-content').infinitescroll({
+            navSelector  : "nav.pagination",
+            nextSelector : "nav.pagination a:last",
+            itemSelector : "article",
+            animate : false,
+            bufferPx: 5,
+            extraScrollPx: 50,
+            loading: {
+                speed: 'fast',
+                selector: null,
+                msgText: '加载中...',
+                finishedMsg:'<div class="post-loading">没有更多了</div>'
+            }
+        });
+    });
+</script>

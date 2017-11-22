@@ -1,0 +1,118 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! Everything inside the #post tags pulls data from the post }}
+<style type="text/css">
+
+    @media (max-width:500px) {
+        .post {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+
+    @media (min-width:500px) {
+        .post {
+            padding: 40px;
+        }
+    }
+
+    article a {
+        color : #337ab7;
+    }
+
+    .post-content img {
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+        padding: 4px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+
+</style>
+
+
+<div class="row ">
+
+    <div class="col-md-8">
+        {{#post}}
+
+            <main class="content" role="main">
+                <article class="{{post_class}}">
+
+                    <header class="post-header">
+                        <h1 class="post-title">{{title}}</h1>
+                        <section class="post-meta">
+                            <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY年MM月DD日"}}</time> {{tags prefix=" 标签："}}
+                        </section>
+                    </header>
+
+                    <section class="post-content">
+                        {{content}}
+                    </section>
+
+                    {{!阿里云广告}}
+                    <!--{{>adv_3}}-->
+
+                    <footer class="post-footer">
+
+                        <section>
+                            <h4>
+                                <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >
+                                    <strong>版权申明：署名-非商业性使用-禁止演绎 3.0 (CC BY-NC-ND 3.0)</strong>
+                                </a>
+                            </h4>
+                            <br>
+                        </section>
+
+                        <!-- 多说评论 -->
+                        <section class="post-comments">
+                            <div class="ds-thread" data-thread-key="{{slug}}" data-title="{{{title}}}" data-url="{{url absolute="true"}}"></div>
+                        </section>
+
+                    </footer>
+
+                </article>
+            </main>
+
+        {{/post}}
+
+    </div>
+
+    <div class="col-md-4">
+
+        {{!作者信息}}
+        {{>author_info}}
+
+        {{!标签云}}
+        {{tag_cloud}}
+
+        {{!阿里云广告}}
+        <!--{{>adv_2}}-->
+
+    </div>
+
+
+</div>
+
+<!-- 多说公共JS代码 start -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"请填写您自己的多说shortname"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
