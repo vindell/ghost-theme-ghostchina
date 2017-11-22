@@ -1,7 +1,7 @@
 {
-  "name": "nifty-theme",
-  "description": "Nifty theme for Ghost",
-  "homepage": "https://github.com/vindell/ghost-theme-nifty",
+  "name": "ghost-china-theme",
+  "description": "GhostChina theme for Ghost",
+  "homepage": "https://github.com/vindell/ghost-theme-ghostchina",
   "version": "1.0.0",
   "author": {
     "name": "vindell",
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vindell/ghost-theme-nifty"
+    "url": "https://github.com/vindell/ghost-theme-ghostchina"
   },
   "scripts": {
    
   },
   "bugs": {
-    "url": "https://github.com/vindell/ghost-theme-nifty/issues"
+    "url": "https://github.com/vindell/ghost-theme-ghostchina/issues"
   },
   "keywords": [
     "elegant",
