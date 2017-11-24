@@ -3,105 +3,89 @@
 {{! The comment above "< default" means - insert everything in this file into
     the {body} of the default.hbs template, which contains our header/footer. }}
 
-{{! Everything inside the #post tags pulls data from the post }}
-<style type="text/css">
+{{! Everything inside the #post tags pulls data from the post }} 
 
-    @media (max-width:500px) {
-        .post {
-            margin-left: 0px;
-            margin-right: 0px;
-        }
-    }
+{{#post}}
+<main class="col-md-8 main-content" role="main">
+	
+	<article id="{{id}}" class="{{post_class}} tag-android tag-ke-hu-duan"> 
 
-    @media (min-width:500px) {
-        .post {
-            padding: 40px;
-        }
-    }
+		<header class="post-header post-head">
+			<h1 class="post-title">{{title}}</h1>
+			<section class="post-meta">
+				<span class="author">作者：<a href="{{author.url}}">{{author.name}}</a></span> •
+				 <time class="post-date" datetime="{{date format='YYYY年MM月DD日'}}" title="{{date format='YYYY年MM月DD日'}}">{{date format='YYYY年MM月DD日'}}</time>
+			</section>				
+		</header>	
+		
+		<!-- Outputs post's feature image if there is one -->
+		{{#if feature_image}}
+		<section class="featured-media hidden-xs">
+			<img src="{{img_url feature_image absolute="true"}}" alt="{{title}}"/>
+		</section>
+		{{/if}}			
 
-    article a {
-        color : #337ab7;
-    }
-
-    .post-content img {
-        display: inline-block;
-        max-width: 100%;
-        height: auto;
-        padding: 4px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        -webkit-transition: all .2s ease-in-out;
-        -o-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
-    }
-
-</style>
+		<section class="post-content">
+			{{content}}
+		</section>
 
 
-<div class="row ">
+	</article>
+	
+	<!-- Open author context instead of providing full path -->
+	{{#author}}   
+	<div class="about-author clearfix">
+		<a href="{{url absolute="true"}}">
+			<!-- Output post author's profile image as an absolute URL -->
+			<img src="{{img_url profile_image}}" class="avatar pull-left"  alt="{{name}}"/> 
+		</a>			
+		<div class="details">
+			<div class="author">
+				关于作者 <a href="{{url absolute="true"}}">{{name}}</a>
+			</div>
+			<div class="meta-info">
+				<span class="loaction"><i class="fa fa-home"></i>北京</span>
+				<span class="website"><i class="fa fa-globe"></i><a href="http://www.bootcss.com" targer="_blank">个人网站/博客</a></span>
+			</div>
+		</div>
+	</div>
+	{{/author}}
+	
+	<div class="prev-next-wrap clearfix">
+		
+		{{#prev_post}}
+			<a class="btn btn-default" href="{{url}}"><i class="fa fa-angle-left fa-fw"></i> {{title}}</a>
+		{{/prev_post}}
+		&nbsp;
+		{{#next_post}}
+			<a class="btn btn-default" href="{{url}}"><i class="fa fa-angle-right fa-fw"></i> {{title}}</a>
+		{{/next_post}}
 
-    <div class="col-md-8">
-        {{#post}}
+	</div>
+	
+</main>
+{{/post}}
 
-            <main class="content" role="main">
-                <article class="{{post_class}}">
+<aside class="col-md-4 sidebar">		
 
-                    <header class="post-header">
-                        <h1 class="post-title">{{title}}</h1>
-                        <section class="post-meta">
-                            <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="YYYY年MM月DD日"}}</time> {{tags prefix=" 标签："}}
-                        </section>
-                    </header>
+	{{! 社区导航 }}
+	{{>comments}}	
+	
+	{{! 下载导航 }}
+	{{>download}}		
 
-                    <section class="post-content">
-                        {{content}}
-                    </section>
-
-                    {{!阿里云广告}}
-                    <!--{{>adv_3}}-->
-
-                    <footer class="post-footer">
-
-                        <section>
-                            <h4>
-                                <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >
-                                    <strong>版权申明：署名-非商业性使用-禁止演绎 3.0 (CC BY-NC-ND 3.0)</strong>
-                                </a>
-                            </h4>
-                            <br>
-                        </section>
-
-                        <!-- 多说评论 -->
-                        <section class="post-comments">
-                            <div class="ds-thread" data-thread-key="{{slug}}" data-title="{{{title}}}" data-url="{{url absolute="true"}}"></div>
-                        </section>
-
-                    </footer>
-
-                </article>
-            </main>
-
-        {{/post}}
-
-    </div>
-
-    <div class="col-md-4">
-
-        {{!作者信息}}
-        {{>author_info}}
-
-        {{!标签云}}
-        {{tag_cloud}}
-
-        {{!阿里云广告}}
-        <!--{{>adv_2}}-->
-
-    </div>
+	{{! 标签云 }}
+	{{>tag_cloud}}
+	
+	{{! 友情链接 }}
+	{{>flink}}
+	
+	{{!阿里云广告}}
+	<!--{{>adv_1}} -->	
+	
+</aside> 
 
 
-</div>
 
 <!-- 多说公共JS代码 start -->
 <script type="text/javascript">
