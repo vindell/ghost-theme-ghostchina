@@ -135,7 +135,7 @@ pre {
   text-decoration: none;
 }
 .main-header .branding img {
-  max-width: 100%;
+  max-width: 100px;
 }
 .home-template .main-header {
   padding-top: 62px;

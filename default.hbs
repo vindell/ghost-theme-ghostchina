@@ -16,7 +16,6 @@
 		
 		{{! Styles'n'Scripts }}
 		{{> head-css}}
-		{{> head-script}}
 		<link rel="shortcut icon" href="{{asset "favicon.ico"}}">
 		{{!-- This tag outputs SEO meta+structured data and other important settings --}}
 		{{ghost_head}}
@@ -38,6 +37,8 @@
 		
 		{{> footer}}
 		{{> copyright}}
+		
+		{{> head-script}}
 		
 		{{!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag --}}
 		{{ghost_foot}}		
